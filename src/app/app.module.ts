@@ -14,6 +14,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { StarRatingModule } from 'angular-star-rating';
 import { CartComponent } from './cart/cart.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { CartComponent } from './cart/cart.component';
     BrowserAnimationsModule,
     RatingModule.forRoot(),
     StarRatingModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,1 +1,131 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" ngSubmit="confirmRegisterForm()">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="name"
+      id="name"
+      aria-describedby="nameHelp"
+    />
+    <div
+      id="nameHelp"
+      *ngIf="
+        registerForm.controls['name'].touched &&
+        registerForm.controls['name'].invalid
+      "
+      class="form-text text-danger"
+    >
+      <small *ngIf="registerForm.controls['name'].errors?.['required']"
+        >This field is required</small
+      >
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      formControlName="email"
+      id="email"
+      aria-describedby="emailHelp"
+    />
+    <div
+      id="nameHelp"
+      *ngIf="
+        registerForm.controls['email'].touched &&
+        registerForm.controls['email'].invalid
+      "
+      class="form-text text-danger"
+    >
+      <small *ngIf="registerForm.controls['email'].errors?.['required']"
+        >This field is required</small
+      >
+      <small *ngIf="registerForm.controls['email'].errors?.['pattern']"
+        >This field must have a valid email format</small
+      >
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="uName" class="form-label">User Name</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="uName"
+      id="uName"
+      aria-describedby="uNameHelp"
+    />
+    <div
+      id="nameHelp"
+      *ngIf="
+        registerForm.controls['uName'].touched &&
+        registerForm.controls['uName'].invalid
+      "
+      class="form-text text-danger"
+    >
+      <small *ngIf="registerForm.controls['uName'].errors?.['required']"
+        >This field is required</small
+      >
+      <small *ngIf="registerForm.controls['uName'].errors?.['pattern']"
+        >This field must have a valid username format</small
+      >
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      formControlName="password"
+      id="password"
+      aria-describedby="passwordHelp"
+    />
+    <div
+      id="nameHelp"
+      *ngIf="
+        registerForm.controls['password'].touched &&
+        registerForm.controls['password'].invalid
+      "
+      class="form-text text-danger"
+    >
+      <small *ngIf="registerForm.controls['password'].errors?.['required']"
+        >This field is required</small
+      >
+      <small *ngIf="registerForm.controls['password'].errors?.['minLength']"
+        >This field must have at lease 8 characters</small
+      >
+      <small *ngIf="registerForm.controls['password'].errors?.['pattern']"
+        >This field must have a valid password format</small
+      >
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="confirmPass" class="form-label">Confirm Password</label>
+    <input
+      type="password"
+      class="form-control"
+      formControlName="confirmPass"
+      id="confirmPass"
+      aria-describedby="confirmPassHelp"
+    />
+    <div
+      id="nameHelp"
+      *ngIf="
+        registerForm.controls['password'].touched &&
+        registerForm.controls['password'].invalid
+      "
+      class="form-text text-danger"
+    >
+      <small *ngIf="registerForm.controls['password'].errors?.['required']"
+        >This field is required</small
+      >
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-secondary my-2"
+    [disabled]="registerForm.invalid"
+  >
+    Register
+  </button>
+</form>

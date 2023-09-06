@@ -1,1 +1,61 @@
-<p>login works!</p>
+<form #loginForm="ngForm" ngSubmit="submitLoginForm(ngForm)">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      name="email"
+      id="email"
+      aria-describedby="emailHelp"
+      ngModel
+      #emailInput="ngModel"
+      required
+      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
+    />
+    <div
+      id="emailHelp"
+      *ngIf="emailInput.touched && emailInput.invalid"
+      class="form-text text-danger"
+    >
+      <small *ngIf="emailInput.errors?.['required']"
+        >This field is required</small
+      >
+      <small *ngIf="emailInput.errors?.['pattern']"
+        >This field must have a valid email format</small
+      >
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      name="password"
+      id="password"
+      aria-describedby="passwordHelp"
+      ngModel
+      #passwordInput="ngModel"
+      required
+    />
+    <div
+      id="passwordHelp"
+      *ngIf="passwordInput.touched && passwordInput.invalid"
+      class="form-text text-danger"
+    >
+      <small *ngIf="passwordInput.errors?.['required']"
+        >This field is required</small
+      >
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary w-100 my-2"
+    [disabled]="loginForm.invalid"
+  >
+    Submit
+  </button>
+  <div id="emailHelp" class="mb-3 form-text">
+    Don't have an account ?
+    <a class="nav-link d-inline" routerLink="/register">Register</a>
+  </div>
+</form>
