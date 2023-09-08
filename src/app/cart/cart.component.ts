@@ -27,19 +27,19 @@ export class CartComponent {
   }
 
   addToCart(product: any) {
-    const existingItemIndex = this.cart.findIndex(
-      (item) => item.id === product.id
-    );
+    const existingItem = this.cart.find((item) => item.id === product.id);
 
-    if (existingItemIndex !== -1) {
+    if (existingItem) {
       // If the product already exists in the cart, increment its quantity.
-      this.cart[existingItemIndex].quantity++;
+      existingItem.quantity++;
     } else {
       // If the product is not in the cart, add it with a quantity of 1.
-      this.cart.push({ ...product, quantity: 1 });
+      product.quantity = 1; // Initialize the quantity property
+      this.cart.push({ ...product });
     }
 
-    // Increment the counter when adding to the cart.
+    // Update the counter and recalculate the total price
+    this.calculateTotalPrice();
     this.incrementCounter();
   }
 
