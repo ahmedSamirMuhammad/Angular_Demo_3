@@ -26,11 +26,8 @@
         {{ (selectedCard.discountPercentage | number : "1.0-0") + "%" }}
       </p>
       <p class="product-price text-success display-6">
-        Get it for only ${{ selectedCard.price }}!
+        Get it for only {{ selectedCard.price | priceCurrency }}!
       </p>
-      <button class="btn btn-secondary btn-lg" routerLink="cart">
-        Add to Cart
-      </button>
     </div>
   </div>
 </div>

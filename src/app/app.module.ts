@@ -16,6 +16,11 @@ import { StarRatingModule } from 'angular-star-rating';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PriceCurrencyPipe } from './price-currency.pipe';
+import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+import { IconPickerModule } from 'ngx-icon-picker';
+import { CounterComponent } from './counter/counter.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     ProductCardComponent,
     CartComponent,
+    PriceCurrencyPipe,
+    CounterComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +44,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     StarRatingModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
+    NgxBootstrapIconsModule.pick(allIcons),
+    IconPickerModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
